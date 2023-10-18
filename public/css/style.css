@@ -1,0 +1,107 @@
+:root{
+	--black-100: rgba(0,0,0,1);
+	--black-80: rgba(0,0,0,.80);
+	--black-64: rgba(0,0,0,.64);
+	--black-32: rgba(0,0,0,.32);
+
+	--white-100: rgba(255,255,255,1);
+	--white-80: rgba(255,255,255,.80);
+	--white-64: rgba(255,255,255,.64);
+	--white-32: rgba(255,255,255,.32);
+}
+
+*{
+	margin: 0;
+}
+
+body{
+	padding: 3rem 0;
+	font-size: 16pt;
+	font-family: 'Roboto';
+}
+
+.u-wdt-100{
+	width: 100%;
+}
+
+.u-pd-40{
+	padding: 40px;
+}
+
+.u-white-100{
+	color: var(--white-100);
+}
+
+.u-white-80{
+	color: var(--white-80);
+}
+
+.u-white-64{
+	color: var(--white-64);
+}
+
+.u-white-32{
+	color: var(--white-32);
+}
+
+.u-black-100{
+	color: var(--black-100);
+}
+
+.u-black-80{
+	color: var(--black-80);
+}
+
+.u-black-64{
+	color: var(--black-64);
+}
+
+.u-black-32{
+	color: var(--black-32);
+}
+
+.u-flex{
+	display: flex;
+}
+
+.u-flex-column{
+	flex-flow: column nowrap;
+}
+
+.u-flex-row{
+	flex-flow: row nowrap;
+}
+
+.u-flex-row-center{
+	justify-content: center;
+}
+
+.u-flex-column-center{
+	align-items: center;
+}
+
+.u-mb-8{
+	margin-bottom: 8px;
+}
+
+.u-mb-40{
+	margin-bottom: 40px;
+}
+
+.btn-primary{
+	background-color: firebrick;
+	color: white;
+	cursor: pointer;
+	padding: 16px 24px;
+	transition: all ease .2s;
+	font-size: 1.125rem;
+}
+
+.btn-primary:hover{
+	opacity: .8;
+}
+
+.footer--brand{
+	background: var(--black-64);
+	color: var(--white-100);
+}

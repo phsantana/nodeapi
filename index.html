@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bilboo Collector</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="icon" type="image/x-icon" href="/assets/images/icon-16x16.png">
+</head>
+<body class="u-flex u-flex-column u-flex-column-center">
+
+	<h1 class="u-mb-40">Bilboo Collector</h1>
+
+	<section id="resultados-da-busca" class="u-flex u-flex-column u-flex-column-center">
+		<h6 id="titulo-estado" class="u-mb-8 u-black-64">Último estado coletado</h6>
+		<h4 id="estado" class="u-mb-40 u-black-100">---</h4>
+
+		<h6 id="titulo-cidade" class="u-mb-8 u-black-64">Última cidade coletada</h6>
+		<h4 id="cidade" class="u-mb-40 u-black-100">---</h4>
+
+		<h6 id="titulo-imoveis" class="u-mb-8 u-black-64">Total de imóveis coletados</h6>
+		<h4 id="imoveis" class="u-mb-40 u-black-100">---</h4>
+	</section>
+
+	<footer class="u-flex u-flex-row-center u-pd-40 u-wdt-100 footer--brand">
+		<h5>Developed by Phillipe Sant'Ana</h5>
+	</footer>
+</body>
+<script src="js/file_generator.js"></script>
+<script type="text/javascript">
+      const ws = new WebSocket('ws://localhost:8080');
+      // A classe `WebSocket` nos navegadores tem uma sintaxe um pouco diferente de `ws`
+      // Ao invés da sintax de EventEmmiter `on('open')`, você adiciona um callback
+      // a propriedade `onopen`.
+
+      // console.log('Ws',ws);
+
+      ws.onopen = function() {
+      	console.log('Conexão estabelecida!');
+        // document.querySelector('#send').disabled = false;
+        // document.querySelector('#send').addEventListener('click', function() {
+        //   ws.send(document.querySelector('#message').value);
+        // });
+        ws.send('Herou');
+      };
+      ws.onmessage = function(msg) {
+        // document.querySelector('#messages').innerHTML += `<div>${msg.data}</div>`;
+        console.log('Mensagem recebida',JSON.parse(msg.data));
+
+        let {estado,tipos,cidade,imoveis} = JSON.parse(msg.data);
+
+        document.querySelector('#estado').innerHTML = estado.toUpperCase();
+        document.querySelector('#cidade').innerHTML = cidade;
+        document.querySelector('#imoveis').innerHTML = imoveis.length;
+
+        // let fields = [
+        // 	"estado",
+        // 	"cidade",
+        // 	"imoveis"
+        // ];
+
+        // fields.forEach(field => {
+        // 	document.querySelector('#'+field).innerHTML = JSON.parse(msg.data)[field];
+        // });
+
+        // gerarArquivo(estado,tipos,cidade,imoveis);
+      };
+</script>
+</html>
